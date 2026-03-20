@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Map</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Grid Map </h1>
+
+    <div class="control-panel">
+        <div class="input-group">
+            <label for="gridSize">Grid Size (n x n):</label>
+            <input type="number" id="gridSize" min="5" max="9" value="5" placeholder="5-9">
+            <button class="btn primary-btn" onclick="generateGrid()">生成 Grid Map</button>
+        </div>
+
+        <!-- 選擇器 -->
+        <div class="mode-selector" id="modeSelector" style="display: none;">
+            <span class="mode-title">Click Mode:</span>
+            <label class="radio-label">
+                <input type="radio" name="cellMode" value="start" checked>
+                <span class="badge start-badge">🟢 起點</span>
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="cellMode" value="end">
+                <span class="badge end-badge">🔴 終點</span>
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="cellMode" value="obstacle">
+                <span class="badge obs-badge">⚫ 障礙物</span>
+                <span class="obs-counter">(<span id="obsCount">0</span>/<span id="obsMax">4</span>)</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- 網格容器 -->
+    <div class="grid-wrapper">
+        <div id="gridContainer">
+            <!--                <p style="color: #94a3b8; margin-top: 20px;">Please generate a square first.</p>-->
+        </div>
+    </div>
+
+    <!-- 送出按鈕與結果提示區 -->
+    <div class="action-panel" id="actionPanel" style="display: none;">
+        <button class="btn success-btn" onclick="submitConfiguration()">運行</button>
+        <div id="statusMessage" class="status-message"></div>
+        <!-- 展示JSON -->
+        <div id="jsonPreview" class="json-preview"></div>
+    </div>
+
+
+    <!--  結果展示區  -->
+    <div class="results-container" id="resultsContainer">
+        <div class="matrix-section">
+            <div class="matrix-title">Value Matrix $V(s)$</div>
+            <div class="grid-wrapper">
+                <div id="valueGrid"></div>
+            </div>
+        </div>
+        <div class="matrix-section">
+            <div class="matrix-title">Policy Matrix $\pi(s)$</div>
+            <div class="grid-wrapper">
+                <div id="policyGrid"></div>
+            </div>
+        </div>
+        <div class="matrix-section">
+            <div class="matrix-title">Optimal Path</div>
+            <div class="grid-wrapper">
+                <div id="pathGrid"></div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
