@@ -1,5 +1,5 @@
 // 🌟 這裡填寫你未來後端伺服器的 API 網址
-const BACKEND_API_URL = 'http://115-2-deeprl-hw.aphelion.tw/api/evaluate';
+const BACKEND_API_URL = 'https://115-2-deeprl-hw.aphelion.tw/api/evaluate';
 
 let currentN = 0;
 let maxObstacles = 0;
